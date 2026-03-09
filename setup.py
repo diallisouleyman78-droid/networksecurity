@@ -32,7 +32,9 @@ setup(
     install_requires=get_requirements(), ## install libraries from requirements.txt
 )
 
-
+# the setup file is used to package and distribute the project.
+# It specifies the project metadata, dependencies, and other configurations needed for installation. 
+# The get_requirements function reads the requirements.txt file and returns a list of dependencies that will be installed when the package is installed.
 
 
 
