@@ -26,3 +26,37 @@ DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
 DATA_INGESTION_INGESTED_DIR: str = "ingested"
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
+
+# build path relative to this constants package so it works regardless of cwd
+SCHEMA_FILE_PATH: str = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)),  # move up from constants to package root
+    "data_schema",
+    "schema.yaml",
+)  # path to the schema.yaml file which contains the schema of the data
+
+
+"""
+Data validation related constants start with DATA_VALIDATION VAR NAME
+"""
+
+DATA_VALIDATION_DIR_NAME: str = "data_validation"
+DATA_VALIDATION_DIR: str = "validated"
+DATA_VALIDATION_INVALID_DIR: str = "invalid"
+DATA_VALIDATION_DRIFT_REPORT_DIR: str = "drift_report"
+DATA_VALIDATION_DRIFT_REPORT_FILE_NAME: str = "report.yaml"
+PREPROCESSING_OBJECT_FILE_NAME: str = "preprocessing.pkl"
+
+"""
+Data transformation related constants start with DATA_TRANSFORMATION VAR NAME
+"""
+
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
+
+#knn imputer params to replace nan values in the data transformation process
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    "missing_values": np.nan,
+    "n_neighbors": 3,
+    "weights": "uniform",
+}

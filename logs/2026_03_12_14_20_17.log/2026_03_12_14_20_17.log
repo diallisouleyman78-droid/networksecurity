@@ -1,0 +1,9 @@
+[2026-03-12 14:20:20,488] 15 root - INFO - Initiating data ingestion
+[2026-03-12 14:20:48,369] 62 root - INFO - Performed train test split on the data
+[2026-03-12 14:20:48,369] 63 root - INFO - Exited split_data_as_train_test method of DataIngestion class
+[2026-03-12 14:20:48,369] 69 root - INFO - Saving the train and test data in the ingested directory
+[2026-03-12 14:20:48,462] 75 root - INFO - Saved the train and test data in the ingested directory
+[2026-03-12 14:20:48,462] 17 root - INFO - Data ingestion completed
+[2026-03-12 14:20:48,462] 20 root - INFO - Initiating data validation
+[2026-03-12 14:20:48,760] 25 root - INFO - Data validation completed
+[2026-03-12 14:20:48,760] 28 root - INFO - Initiating data transformation

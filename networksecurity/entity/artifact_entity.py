@@ -15,3 +15,9 @@ class DataValidationArtifact:
     invalid_train_file_path: str
     invalid_test_file_path: str
     drift_report_file_path: str # used to store the file path of the drift report generated after the data validation process is completed. This file path will be used in the model training process to read the drift report and check for data drift before training the model.  
+
+@dataclass
+class DataTransformationArtifact:
+    transformed_object_file_path: str
+    transformed_train_file_path: str
+    transformed_test_file_path: str
