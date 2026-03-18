@@ -21,3 +21,15 @@ class DataTransformationArtifact:
     transformed_object_file_path: str
     transformed_train_file_path: str
     transformed_test_file_path: str
+
+@dataclass
+class ClassificationMetricArtifact: # used to store the classification metrics of the model after training the model. This information will be used in the model evaluation process to check if the model is performing well on the train and test data. If the model is not performing well, then we can take appropriate actions like sending an email notification to the concerned team or logging the error message in the log file.
+    f1_score: float
+    precision_score: float
+    recall_score: float
+
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path: str
+    train_metric_artifact: ClassificationMetricArtifact # used to store the classification metrics of the model on the train data after training the model. This information will be used in the model evaluation process to check if the model is performing well on the train data. If the model is not performing well, then we can take appropriate actions like sending an email notification to the concerned team or logging the error message in the log file.
+    test_metric_artifact: ClassificationMetricArtifact

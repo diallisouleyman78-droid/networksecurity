@@ -34,6 +34,9 @@ SCHEMA_FILE_PATH: str = os.path.join(
     "schema.yaml",
 )  # path to the schema.yaml file which contains the schema of the data
 
+SAVED_MODEL_DIR = os.path.join("saved_models")
+MODEL_FILE_NAME = "model.pkl"
+
 
 """
 Data validation related constants start with DATA_VALIDATION VAR NAME
@@ -60,3 +63,12 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
     "n_neighbors": 3,
     "weights": "uniform",
 }
+
+"""
+Model training related constants start with MODEL_TRAINING VAR NAME
+"""
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
+MODEL_TRAINER_MODEL_NAME: str = "model.pkl"
+MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
+MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHOLD: float = 0.05
