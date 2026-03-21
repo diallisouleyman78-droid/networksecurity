@@ -1,0 +1,23 @@
+artifact_path: /home/diallo/Documents/Data science projects/NetworkSecurity/mlruns/2/models/m-843a64933e9b4e3c8759bc4bbeb254f3/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-843a64933e9b4e3c8759bc4bbeb254f3
+model_size_bytes: 921
+model_uuid: m-843a64933e9b4e3c8759bc4bbeb254f3
+prompts: null
+run_id: 95916ef02b5743b7b89045dcbb3a7171
+utc_time_created: '2026-03-21 21:31:26.527287'

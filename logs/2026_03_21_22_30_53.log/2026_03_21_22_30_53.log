@@ -1,0 +1,19 @@
+[2026-03-21 22:30:55,796] 16 root - INFO - Initiating data ingestion
+[2026-03-21 22:31:25,455] 64 root - INFO - Performed train test split on the data
+[2026-03-21 22:31:25,455] 65 root - INFO - Exited split_data_as_train_test method of DataIngestion class
+[2026-03-21 22:31:25,456] 71 root - INFO - Saving the train and test data in the ingested directory
+[2026-03-21 22:31:25,522] 77 root - INFO - Saved the train and test data in the ingested directory
+[2026-03-21 22:31:25,522] 18 root - INFO - Data ingestion completed
+[2026-03-21 22:31:25,522] 21 root - INFO - Initiating data validation
+[2026-03-21 22:31:25,737] 26 root - INFO - Data validation completed
+[2026-03-21 22:31:25,737] 29 root - INFO - Initiating data transformation
+[2026-03-21 22:31:25,738] 52 root - INFO - Initiating data transformation
+[2026-03-21 22:31:25,738] 54 root - INFO - Reading validated train and test data
+[2026-03-21 22:31:25,757] 39 root - INFO - Entered get_data_transformer_object method of DataTransformation class
+[2026-03-21 22:31:25,757] 42 root - INFO - initialized knn imputer
+[2026-03-21 22:31:25,767] 50 root - INFO - Object saved to file: Artifact/2026_03_21_22_30_53/data_transformation/transformed_object/preprocessing.pkl
+[2026-03-21 22:31:25,768] 33 root - INFO - Data transformation completed
+[2026-03-21 22:31:25,768] 35 root - INFO - Initiating model training
+[2026-03-21 22:31:35,250] 50 root - INFO - Object saved to file: Artifact/2026_03_21_22_30_53/model_trainer/trained_model/model.pkl
+[2026-03-21 22:31:35,250] 120 root - INFO - Best model found on both training and testing dataset: Logistic Regression with test score: {'test_score': 0.7178565312749043}
+[2026-03-21 22:31:35,250] 39 root - INFO - Model training completed

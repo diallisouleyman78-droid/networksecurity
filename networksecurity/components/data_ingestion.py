@@ -14,9 +14,11 @@ import numpy as np
 
 
 from dotenv import load_dotenv
+import certifi
 load_dotenv() # load the environment variables from the .env file
 
 MONGO_DB_URL = os.getenv("MONGO_DB_URL") # get the MongoDB URL from the environment variable
+ca = certifi.where()
 
 
 class DataIngestion:
@@ -34,7 +36,7 @@ class DataIngestion:
         try:
             database_name = self.data_ingestion_config.database_name
             collection_name = self.data_ingestion_config.collection_name
-            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL, tlsCAFile=ca)
             collection = self.mongo_client[database_name][collection_name]
 
             df = pd.DataFrame(list(collection.find())) # convert the collection to a dataframe

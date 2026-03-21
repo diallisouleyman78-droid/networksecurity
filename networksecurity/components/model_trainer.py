@@ -1,4 +1,5 @@
 import os, sys
+from xml.parsers.expat import model
 
 from networksecurity.exception import NetworkSecurityException
 from networksecurity.logging import logging
@@ -21,6 +22,14 @@ from sklearn.ensemble import (
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import r2_score
+import mlflow
+import mlflow.sklearn
+
+MLFLOW_TRACKING_URI = "sqlite:///mlflow.db"
+EXPERIMENT_NAME = "NetworkSecurity-Phishing-Detection"
+
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+mlflow.set_experiment(EXPERIMENT_NAME)
 
 
 class ModelTrainer:
@@ -30,6 +39,14 @@ class ModelTrainer:
             self.data_transformation_artifact = data_transformation_artifact
         except Exception as e:
             raise NetworkSecurityException(e, sys) from e
+        
+    def track_mlflow(self, best_model, classification_metric, run_name="train"):
+        with mlflow.start_run(run_name=f"model_training_{run_name}"):
+            mlflow.log_param("model_type", best_model.__class__.__name__)
+            mlflow.log_metric("f1_score", classification_metric.f1_score)
+            mlflow.log_metric("precision_score", classification_metric.precision_score)
+            mlflow.log_metric("recall_score", classification_metric.recall_score)
+            mlflow.sklearn.log_model(best_model, "model")
         
     def train_model(self, x_train, y_train, x_test, y_test):   
         models = {
@@ -79,11 +96,12 @@ class ModelTrainer:
         
 
         ## Track MLFLOW
-
+        self.track_mlflow(best_model, classification_train_metric, run_name="train")
 
 
         y_test_pred = best_model.predict(x_test)
         classification_test_metric = get_classification_score(y_true=y_test, y_pred=y_test_pred)
+        self.track_mlflow(best_model, classification_test_metric, run_name="test")
 
         preprocessor = load_object(self.data_transformation_artifact.transformed_object_file_path)
         model_dir = os.path.dirname(self.model_trainer_config.trained_model_file_path)
