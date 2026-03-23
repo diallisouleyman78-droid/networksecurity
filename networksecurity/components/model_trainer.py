@@ -22,14 +22,21 @@ from sklearn.ensemble import (
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import r2_score
+
+from dotenv import load_dotenv
+load_dotenv()
+
 import mlflow
 import mlflow.sklearn
+import dagshub
 
-MLFLOW_TRACKING_URI = "sqlite:///mlflow.db"
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
 EXPERIMENT_NAME = "NetworkSecurity-Phishing-Detection"
 
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 mlflow.set_experiment(EXPERIMENT_NAME)
+
+dagshub.init(repo_owner='diallisouleyman78', repo_name='networksecurity', mlflow=True)
 
 
 class ModelTrainer:
@@ -110,6 +117,8 @@ class ModelTrainer:
         NetworkModel(preprocessor=preprocessor, model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path, obj=NetworkModel)
         #save the model to the file path specified in the model trainer config using the save_object function from the utils module which uses pickle to save the model object to the file path specified in the model trainer config. We are saving the model object which contains both the preprocessor and the model because we want to use the preprocessor and the model together for prediction in the future. If we save only the model, then we will have to load the preprocessor separately and then use it for prediction which will be time consuming and we have already done the data transformation in the data transformation stage. So we will save both the preprocessor and the model together in a single object and save that object to the file path specified in the model trainer config.
+
+        save_object("final_model/model.pkl", best_model)
 
         ##model trainer artifact
         model_trainer_artifact = ModelTrainerArtifact(

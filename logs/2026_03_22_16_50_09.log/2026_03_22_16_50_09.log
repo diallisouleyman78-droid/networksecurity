@@ -1,0 +1,21 @@
+[2026-03-22 16:50:15,171] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-03-22 16:50:15,174] 107 dagshub - INFO - Accessing as diallisouleyman78
+[2026-03-22 16:50:17,442] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/diallisouleyman78/networksecurity "HTTP/1.1 200 OK"
+[2026-03-22 16:50:19,163] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2026-03-22 16:50:19,164] 107 dagshub - INFO - Initialized MLflow to track repo "diallisouleyman78/networksecurity"
+[2026-03-22 16:50:19,165] 107 dagshub - INFO - Repository diallisouleyman78/networksecurity initialized!
+[2026-03-22 16:51:05,047] 34 root - INFO - Starting data ingestion
+[2026-03-22 16:51:29,325] 64 root - INFO - Performed train test split on the data
+[2026-03-22 16:51:29,325] 65 root - INFO - Exited split_data_as_train_test method of DataIngestion class
+[2026-03-22 16:51:29,325] 71 root - INFO - Saving the train and test data in the ingested directory
+[2026-03-22 16:51:29,411] 77 root - INFO - Saved the train and test data in the ingested directory
+[2026-03-22 16:51:29,412] 37 root - INFO - Data ingestion completed and artifact: DataIngestionArtifact(train_file_path='Artifact/2026_03_22_16_50_09/data_ingestion/ingested/train.csv', test_file_path='Artifact/2026_03_22_16_50_09/data_ingestion/ingested/test.csv')
+[2026-03-22 16:51:29,665] 52 root - INFO - Initiating data transformation
+[2026-03-22 16:51:29,665] 54 root - INFO - Reading validated train and test data
+[2026-03-22 16:51:29,693] 39 root - INFO - Entered get_data_transformer_object method of DataTransformation class
+[2026-03-22 16:51:29,693] 42 root - INFO - initialized knn imputer
+[2026-03-22 16:51:29,707] 50 root - INFO - Object saved to file: Artifact/2026_03_22_16_50_09/data_transformation/transformed_object/preprocessing.pkl
+[2026-03-22 16:51:29,710] 50 root - INFO - Object saved to file: final_model/preprocessor.pkl
+[2026-03-22 16:52:03,989] 50 root - INFO - Object saved to file: Artifact/2026_03_22_16_50_09/model_trainer/trained_model/model.pkl
+[2026-03-22 16:52:03,990] 50 root - INFO - Object saved to file: final_model/model.pkl
+[2026-03-22 16:52:03,990] 129 root - INFO - Best model found on both training and testing dataset: Logistic Regression with test score: {'test_score': 0.7178565312749043}
