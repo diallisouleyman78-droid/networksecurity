@@ -2,9 +2,10 @@ name: workflow
 
 on:
   push:
-    - main
-  paths_ignore:
-    - "README.md"
+    branches:
+      - main
+    paths_ignore:
+      - "README.md"
 
 jobs:
  integration:
@@ -15,8 +16,8 @@ jobs:
         uses: actions/checkout@v2
   
       - name: Lint code
-        uses: echo "Linting repository"
+        run: echo "Linting repository"
 
       - name: Run unit tests
-        uses: echo "Running unit tests"  
+        run: echo "Running unit tests"  
         
