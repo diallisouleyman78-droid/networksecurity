@@ -8,10 +8,10 @@ on:
       - "README.md"
 
 jobs:
- integration:
-   name: Continuous Integration
-   runs-on: ubuntu-latest
-   steps:
+  integration:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
   
@@ -20,11 +20,12 @@ jobs:
 
       - name: Run unit tests
         run: echo "Running unit tests"
- build-and-push-ecr-image:
-   name: Continuous Delivery
-   needs: integration
-   runs-on: ubuntu-latest
-   steps:
+
+  build-and-push-ecr-image:
+    name: Continuous Delivery
+    needs: integration
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -45,7 +46,6 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push image to Amazon ECR
-        id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
@@ -53,8 +53,3 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          
-       
-
-
-        
