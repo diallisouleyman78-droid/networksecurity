@@ -8,10 +8,10 @@ on:
       - "README.md"
 
 jobs:
-  integration:
-    name: Continuous Integration
-    runs-on: ubuntu-latest
-    steps:
+ integration:
+   name: Continuous Integration
+   runs-on: ubuntu-latest
+   steps:
       - name: Checkout code
         uses: actions/checkout@v2
   
@@ -20,11 +20,10 @@ jobs:
 
       - name: Run unit tests
         run: echo "Running unit tests"
-
-  build-and-push-ecr-image:
-    name: Continuous Delivery
-    needs: integration
-    runs-on: ubuntu-latest
+ build-and-push-ecr-image:
+   name: Continuous Delivery
+   needs: integration
+   runs-on: ubuntu-latest
    steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -54,7 +53,7 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+          
        
 
 
