@@ -25,6 +25,8 @@ from networksecurity.entity.artifact_entity import (
 )
 from networksecurity.cloud.s3_syncer import S3Sync
 
+#ok lets go
+
 class trainingPipeline:
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
